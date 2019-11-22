@@ -3,12 +3,22 @@
 #Defines the Person class and its functions
 
 
-class Person:
-    def __init__(self,first_name,last_name,age):
+class Person():
+    count = 0
+
+    def __init__(self, first_name, last_name, age):
         self.first_name = first_name
         self.last_name = last_name
-        self.age = age
+        self.age = int(age)
+        Person.count += 1
 
-    def description(self):
-        print(f"The author's first name is {self.first_name} and their last name is {self.last_name}. They are {self.age} years old. ")
+    def __del__(self):
+        Person.count -= 1
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+    def all_data(self):
+        return {'first_name':self.first_name, 'last_name':self.last_name, 'age':self.age}
+
 
